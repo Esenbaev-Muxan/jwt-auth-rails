@@ -1,10 +1,10 @@
 class PhonesController < ApplicationController
-  before_action :authorize
+  before_action :authorize,only: %i[ create update destroy ]
   before_action :set_phone, only: %i[ show update destroy ]
 
   # GET /phones
   def index
-    @phones = @user.phones.all
+    @phones = Phone.all
 
     render json: @phones
   end
